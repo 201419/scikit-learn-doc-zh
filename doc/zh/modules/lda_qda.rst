@@ -1,7 +1,7 @@
 .. _lda_qda:
 
 =============================================================
-Linear and Quadratic Discriminant Analysis（线性和二次判别分析）
+线性和二次判别分析
 =============================================================
 
 .. currentmodule:: sklearn
@@ -24,7 +24,7 @@ Linear Discriminant Analysis（线性判别分析）(:class:`discriminant_analys
 
     :ref:`sphx_glr_auto_examples_classification_plot_lda_qda.py`: 在综合的数据基础上对比LDA和QDA
 
-Dimensionality reduction using Linear Discriminant Analysis（使用线性判别分析实现降维）
+使用线性判别分析实现降维
 ====================================================================================
 
 :class:`discriminant_analysis.LinearDiscriminantAnalysis` 可以通过给予包含了最大化不同类别间距的方向的线性子空间（subspace）投放输入数据，
@@ -37,7 +37,7 @@ Dimensionality reduction using Linear Discriminant Analysis（使用线性判别
 
     :ref:`sphx_glr_auto_examples_decomposition_plot_pca_vs_lda.py`: 在 Iris 数据集对比了 LDA 和 PCA 之间的降维差异
 
-Mathematical formulation of the LDA and QDA classifiers（LDA和QDA分类器的数学公式）
+LDA 和 QDA 分类器的数学公式
 ================================================================================
 
 LDA 和 QDA 都是源于简单的概率模型，这些模型对于每一个类别 :math:`k` 的类别相关分布 :math:`P(X|y=k)` 都可以通过贝叶斯定理所获得。
@@ -52,8 +52,8 @@ LDA 和 QDA 都是源于简单的概率模型，这些模型对于每一个类�
 .. math:: p(X | y=k) = \frac{1}{(2\pi)^n |\Sigma_k|^{1/2}}\exp\left(-\frac{1}{2} (X-\mu_k)^t \Sigma_k^{-1} (X-\mu_k)\right)
 
 
-为了使用该模型作为分类器使用，我们需要通过训练集数据预测更重要的类别：:math:`P(y=k)`（通过每个类 :math:`k` 的实例的概率预测）
-类别均值：:math:`\mu_k`（通过经验主义的样本类均值预测）以及协方差矩阵（由经验主义样本类协方差矩阵或常规的预测器：观察收缩损失的部分）
+为了使用该模型作为分类器使用，我们需要通过训练集数据预测更重要的类别 :math:`P(y=k)` （通过每个类 :math:`k` 的实例的概率预测）
+类别均值 :math:`\mu_k` （通过经验主义的样本类均值预测）以及协方差矩阵（由经验主义样本类协方差矩阵或常规的预测器：观察收缩损失的部分）.
 
 关于 LDA 的案例，高斯被看作是共享相同协方差矩阵：:math:`\Sigma_k = \Sigma` for all :math:`k`。这会导致线性决策显示介于比较对数概率之比 :math:`\log[P(y=k | X) / P(y=l | X)]` 之间。
 
@@ -68,7 +68,7 @@ LDA 和 QDA 都是源于简单的概率模型，这些模型对于每一个类�
       如果在QDA模型中假设协方差矩阵是对角的，那么在每个类别中的输入数据则被假定是相关依赖的。
       而且结果分类器会和高斯朴素贝叶斯分类器 :class:`naive_bayes.GaussianNB` 相同。
 
-Mathematical formulation of LDA dimensionality reduction （LDA 的降维数学公式）
+LDA 的降维数学公式
 =============================================================================
 
 为了理解 LDA 在降维上的应用，它对于进行 LDA 分类的几何重构是十分有用的。我们用 :math:`K` 表示目标类别的总数。
@@ -86,7 +86,7 @@ Mathematical formulation of LDA dimensionality reduction （LDA 的降维数学�
 [#1]_ 。
 
 Shrinkage（收缩）
-===============
+=================
 
 收缩是一个在训练样本数量相比特征而言很小的情况下可以提升预测（准确性）的协方差矩阵。
 在这个情况下，经验样本协方差是一个很差的预测器。LDA 收缩可以通过设置 :class:`discriminant_analysis.LinearDiscriminantAnalysis` 类的 ``shrinkage`` 参数为 'auto' 以得到应用。
@@ -101,8 +101,8 @@ Shrinkage（收缩）
 .. centered:: |shrinkage|
 
 
-Estimation algorithms（预测算法）
-===============================
+预估算法
+=================================
 
 默认的 solver 是 'svd'。它可以同时执行分类以及 transform (转换),而且它不会依赖于协方差矩阵的计算（结果）。这在特征数量特别大的时候就显得十分具有优势。然而，'svd' solver 无法与 shrinkage （收缩）同时使用。
 
